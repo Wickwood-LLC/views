@@ -43,6 +43,11 @@
         <div id="<?php print $widget->id; ?>-wrapper" class="views-widget">
           <?php print $widget->widget; ?>
         </div>
+        <?php if (!empty($widget->description)): ?>
+          <div class="description">
+            <?php print $widget->description; ?>
+          </div>
+        <?php endif; ?>
       </div>
     <?php endforeach; ?>
     <?php if (!empty($sort_by)): ?>

@@ -399,7 +399,7 @@ class views_handler_field extends views_handler {
         'alter_text' => array('default' => FALSE, 'bool' => TRUE),
         'text' => array('default' => '', 'translatable' => TRUE),
         'make_link' => array('default' => FALSE, 'bool' => TRUE),
-        'path' => array('default' => '', 'translatable' => TRUE),
+        'path' => array('default' => ''),
         'absolute' => array('default' => FALSE, 'bool' => TRUE),
         'external' => array('default' => FALSE, 'bool' => TRUE),
         'replace_spaces' => array('default' => FALSE, 'bool' => TRUE),
@@ -410,7 +410,7 @@ class views_handler_field extends views_handler {
         'link_class' => array('default' => ''),
         'prefix' => array('default' => '', 'translatable' => TRUE),
         'suffix' => array('default' => '', 'translatable' => TRUE),
-        'target' => array('default' => '', 'translatable' => TRUE),
+        'target' => array('default' => ''),
         'nl2br' => array('default' => FALSE, 'bool' => TRUE),
         'max_length' => array('default' => ''),
         'word_boundary' => array('default' => TRUE, 'bool' => TRUE),
@@ -814,7 +814,7 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
           if (!empty($options[$type])) {
             $items = array();
             foreach ($options[$type] as $key => $value) {
-              $items[] = $key . ' == ' . $value;
+              $items[] = $key . ' == ' . check_plain($value);
             }
             $output .= theme('item_list',
               array(
@@ -965,7 +965,7 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
       '#type' => 'textarea',
       '#title' => t('No results text'),
       '#default_value' => $this->options['empty'],
-      '#description' => t('Provide text to display if this field returns no results. You may include HTML. You may enter data from this view as per the "Replacement patterns" in the "Rewrite Results" section below.'),
+      '#description' => t('Provide text to display if this field contains an empty result. You may include HTML. You may enter data from this view as per the "Replacement patterns" in the "Rewrite Results" section below.'),
       '#fieldset' => 'empty_field_behavior',
     );
 

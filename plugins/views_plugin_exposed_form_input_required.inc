@@ -15,7 +15,7 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
   function option_definition() {
     $options = parent::option_definition();
 
-    $options['text_input_required'] = array('default' => t('Select any filter and click on Apply to see results'), 'translatable' => TRUE);
+    $options['text_input_required'] = array('default' => 'Select any filter and click on Apply to see results', 'translatable' => TRUE);
     $options['text_input_required_format'] = array('default' => NULL);
     return $options;
   }
@@ -71,6 +71,7 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
         'group_type' => 'group',
         'content' => $this->options['text_input_required'],
         'format' => $this->options['text_input_required_format'],
+        'empty' => TRUE,
       );
       $handler = views_get_handler('views', 'area', 'area');
       $handler->init($this->view, $options);
