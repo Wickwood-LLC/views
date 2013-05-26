@@ -1,7 +1,8 @@
 name = Views
-description = Create customized lists and queries from your database.
+description = Create customized lists and queries from your database.  WWM applied patch from https://drupal.org/node/477984#comment-6073924
 package = Views
 core = 7.x
+version = 7.x-3.x-dev-wwm
 php = 5.2
 
 ; Always available CSS
