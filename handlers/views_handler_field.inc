@@ -1204,6 +1204,12 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
     // Filter this right away as our substitutions are already sanitized.
     $value = filter_xss_admin($alter['text']);
     $value = strtr($value, $tokens);
+    // User might already used '%5B' and '%5D' instead of literal [ and ].
+    // After token replacements, we need to convert those codes to literal
+    // square bracket characters. Otherwise problems like comment #5 and #6 of
+    // https://www.drupal.org/node/578772 will happen.
+    // We could have used rawurldecode() also, but not sure about the consequences.
+    $value = strtr($value, array('%5B' => '[', '%5D' => ']'));
 
     return $value;
   }
